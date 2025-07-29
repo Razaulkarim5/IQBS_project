@@ -1,0 +1,190 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+{% load static %}
+
+{% block title %}
+Intelligent Question Bank System-Home
+{% endblock %}
+<!-- {% static 'a'} -->
+
+<style>
+    /* Radial Gradient Background */
+
+
+    .main-content {
+        margin-right: 100px;
+        margin-left: 135px;
+        /* Adjust for sidebar width */
+        padding: 20px;
+    }
+
+    .card-container {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin: 10px;
+        /* Reduce this value to decrease the space */
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        transition: all 0.3s ease;
+    }
+
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    form label {
+
+        margin-bottom: 10px;
+    }
+
+    form input,
+    form textarea {
+        padding: 10px;
+        margin-bottom: 15px;
+        background-color: rgb(245, 242, 242);
+        border: 1px solid #444;
+        color: #0a0909;
+    }
+
+    form button {
+        padding: 10px;
+        background-color: #0066cc;
+        border: none;
+        color: #0c0b0b;
+        cursor: pointer;
+    }
+
+    .row {
+        display: flex;
+
+    }
+
+    @media (max-width:768) {
+        #contact.contact2 {
+            height: 300px;
+        }
+
+        #contact.contact2.text-center {
+            padding: 15px;
+
+        }
+
+    }
+</style>
+<!-- Main Content -->
+<div class="col-md-12 main-content">
+    <div class="text-center">
+        <h1 class="py-5 display-5 fw-bold">Welcome To Intelligent Question Bank System</h1>
+    </div>
+
+    <!-- Cards -->
+
+    <div class="card-container row-12">
+        <!-- Card 1 -->
+        <!-- <div class="card" style="width: 18rem;"> -->
+        <div class="card text-center bg-light text-dark col-4" style="width: 15rem; height: 10rem;">
+            <div class="card-body">
+                <h5 class="card-title">Create Questions</h5>
+                <p class="card-text">Add new questions to the system.</p>
+                <a href="{% url 'create' %}" class="btn btn-primary">Create</a>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="card text-center bg-light text-dark col-4" style="width: 15rem; height: 10rem;">
+            <div class="card-body">
+                <h5 class="card-title">View Questions</h5>
+                <p class="card-text">Browse existing questions.</p>
+                <a href="{% url 'view' %}" class="btn btn-primary">View</a>
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="row  card-container row">
+            <div class="card text-center bg-light text-dark col-4" style="width: 15rem; height: 10rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Analysis</h5>
+                    <p class="card-text">Analyze question performance.</p>
+                    <a href="{% url 'analyze' %}" class="btn btn-primary">Analyze</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <br>
+
+    <!-- About Section -->
+    <div class="container">
+        <div class="row mt-5 align-items-center  ">
+            <h2 class="text-light  text-center" id="about">About Us</h2>
+            <div class="col-md-12">
+
+                <h1 class="text-light">
+                    The Intelligent Question Bank System empowers personalized learning and efficient content
+                    organization. It categorizes educational content into cognitive levels, aligning with Bloom's
+                    taxonomy, such as knowledge, comprehension, and application. This innovative system enhances
+                    teaching strategies and supports learners in focusing on skill development and higher-order
+                    thinking.
+                </h1>
+            </div>
+            <!-- <div class="col-md-6">
+                <img src="{% static 'asset/about.jpg' %}" height="100px" width="610" alt="About Image ">
+            </div> -->
+        </div>
+        <br>
+        <br><br>
+
+
+        <!-- Contact Section -->
+
+        <div class="row">
+            <h2 class="text-center" id="contact">Contact Us</h2>
+            <div class="text-light mt-5 col-md-6">
+
+                <div class="col-md-6 contact2 d-flex align-items-center justify-content-center">
+                    <div class=" text-center text-light">
+                        <h4><i class="fa fa-phone" aria-hidden="true"></i>Phone</h4>
+                        <p>+601157725612</p>
+                        <h4><i class="fa fa-envelope" aria-hidden="true"></i>Email</h4>
+                        <p>razaulkarim992001@gmail.com</p>
+                        <h4><i class="fa fa-location-arrow" aria-hidden="true"></i>Address</h4>
+                        <p>Perlis,Malaysia</p>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <form action="https://formsubmit.co/razaulkarim992001@gmail.com" method="POST">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="Please Enter your name" />
+
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Please Enter your Email dress" />
+
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message"></textarea>
+
+                    <button type="submit">Send Message</button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}

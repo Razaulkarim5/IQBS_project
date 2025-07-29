@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/bootstrap.css">
+    <style>
+        .background-radial-gradient {
+            background-color: hsl(218, 41%, 15%);
+            background-image: radial-gradient(650px circle at 0% 0%,
+                hsl(218, 41%, 35%) 15%,
+                hsl(218, 41%, 30%) 35%,
+                hsl(218, 41%, 20%) 75%,
+                hsl(218, 41%, 19%) 80%,
+                transparent 100%),
+
+                radial-gradient(1250px circle at 100% 100%,
+                hsl(218, 41%, 45%) 15%,
+                hsl(218, 41%, 30%) 35%,
+                hsl(218, 41%, 20%) 75%,
+                hsl(218, 41%, 19%) 80%,
+
+                transparent 100%);
+            height: 100vh;
+        }
+
+        #radius-shape-1 {
+            height: 220px;
+            width: 220px;
+            top: -60px;
+            left: -130px;
+            background: radial-gradient(#44006b, #ad1fff);
+            overflow: hidden;
+        }
+
+        #radius-shape-2 {
+            border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+            bottom: -60px;
+            right: -110px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(#44006b, #ad1fff);
+            overflow: hidden;
+        }
+
+        .bg-glass {
+            background-color: hsla(0, 0%, 100%, 0.9) !important;
+            backdrop-filter: saturate(200%) blur(25px);
+        }
+
+        .toggle-link {
+            cursor: pointer;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .btn {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body class="background-radial-gradient">
+    <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+        <div class="row gx-lg-5 align-items-center mb-5">
+            <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+                <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+                    Intelligent Question Bank System
+                    <span style="color: hsl(218, 81%, 75%)">Based Bloom's Taxonomy levels</span>
+                </h1>
+                <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+                    A dynamic platform designed to generate and manage questions aligned with Bloom's Taxonomy levels,
+                    fostering effective learning and assessment
+                </p>
+            </div>
+
+            <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+                <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+                <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+                <div class="card bg-glass">
+                    <div class="card-body px-4 py-5 px-md-5">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div id="signInForm">
+                                        <h4 class="text-center mb-4">LogIn</h4>
+                                        <form id="loginForm">
+                                            <div class="mb-3">
+                                                <label for="email" class="form-label">Email</label>
+                                                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="password" class="form-label">Password</label>
+                                                <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                                            </div>
+                                            <div class="d-grid">
+                                                <button type="submit" class="btn btn-primary">Sign In</button>
+                                            </div>
+                                        </form>
+                                        <p class="text-center mt-3">
+                                            Don't have an account? <span class="toggle-link" onclick="toggleForms()">Sign Up</span>
+                                        </p>
+                                    </div>
+
+                                    <div id="signUpForm" style="display: none;">
+                                        <h4 class="text-center mb-4">Sign Up</h4>
+                                        <form id="signupForm">
+                                            <div class="mb-3">
+                                                <label for="signupName" class="form-label">Full Name</label>
+                                                <input type="text" class="form-control" id="signupName" placeholder="Enter your full name" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="signupEmail" class="form-label">Email</label>
+                                                <input type="email" class="form-control" id="signupEmail" placeholder="Enter your email" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="signupPassword" class="form-label">Password</label>
+                                                <input type="password" class="form-control" id="signupPassword" placeholder="Create a password" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="signupPassword" class="form-label">Re-write password</label>
+                                                <input type="password" class="form-control" id="signupPassword" placeholder="Confirm password" required>
+                                            </div>
+                                            <div class="d-grid">
+                                                <button type="submit" class="btn btn-primary">Sign Up</button>
+                                            </div>
+                                        </form>
+                                        <p class="text-center mt-3">
+                                            Already have an account? <span class="toggle-link" onclick="toggleForms()">Sign In</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleForms() {
+            const signInForm = document.getElementById('signInForm');
+            const signUpForm = document.getElementById('signUpForm');
+
+            if (signInForm.style.display === 'none') {
+                signInForm.style.display = 'block';
+                signUpForm.style.display = 'none';
+            } else {
+                signInForm.style.display = 'none';
+                signUpForm.style.display = 'block';
+            }
+        }
+
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            const storedEmail = "user@example.com";
+            const storedPassword = "password123";
+
+            if (email === storedEmail && password === storedPassword) {
+                window.location.href = "Home.html";
+            } else {
+                alert("Invalid email or password. Please try again.");
+            }
+        });
+
+        document.getElementById("signupForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById("signupName").value;
+            const email = document.getElementById("signupEmail").value;
+            const password = document.getElementById("signupPassword").value;
+            const confirmPassword = document.getElementById("signupPassword").value; // Assuming you add an ID for confirm password field
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return;
+            }
+
+            // In a real application, you would send this data to your backend for user registration
+            console.log("New User:", { name, email, password });
+            alert("Sign up successful! You can now log in.");
+
+            // Optionally, switch to the sign-in form
+            toggleForms();
+        });
+    </script>
+    <script src="./JS/bootstrap.bundle.js"></script>
+</body>
+</html>

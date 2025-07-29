@@ -1,0 +1,231 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+{% block title %}
+Intelligent Question Bank System-Analyze
+{% endblock %}
+
+<style>
+    /* Radial Gradient Background */
+    .content-wrapper {
+        flex: 1;
+        display: flex;
+    }
+
+    .main-content {
+        margin-left: 250px;
+        /* Adjust for sidebar width */
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .centered-content {
+        text-align: center;
+        max-width: 800px;
+    }
+
+    .card-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .footer {
+        text-align: center;
+        padding: 10px;
+        background-color: rgba(52, 58, 64, 0.9);
+        color: white;
+    }
+</style>
+
+
+<!-- Main Content -->
+<div class="main-content">
+    <div class="centered-content">
+        <h1 class="my-5 display-5 fw-bold">View Analysis</h1>
+        <div class="card-container d-flex justify-content-around flex-wrap">
+            <!-- Easy Level Card -->
+            <div class="card text-center bg-light text-dark" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Easy Level</h5>
+                    <p class="card-text">Remember & Understand</p>
+                    <a href="#easy" class="btn btn-primary" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="easy">View in details</a>
+                </div>
+            </div>
+
+            <!-- Medium Level Card -->
+            <div class="card text-center bg-light text-dark" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Medium Level</h5>
+                    <p class="card-text">Apply & Analyze</p>
+                    <a href="#medium" class="btn btn-primary" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="medium">View in details</a>
+                </div>
+            </div>
+
+            <!-- Hard Level Card -->
+            <div class="card text-center bg-light text-dark" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Hard Level</h5>
+                    <p class="card-text">Evaluate & Create</p>
+                    <a href="#hard" class="btn btn-primary" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="hard">View in details</a>
+                </div>
+            </div>
+
+            <!-- All details card -->
+            <div class="card text-center bg-light text-dark" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">All Questions Analysis</h5>
+                    <p class="card-text">Percentage Distribution by Difficulty Level</p>
+                    <a href="#all" class="btn btn-primary" data-bs-toggle="collapse" role="button" aria-expanded="false"
+                        aria-controls="all">View in details</a>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Collapsible Sections for Each Level -->
+        <div class="mt-5">
+            <!-- Easy Questions -->
+            <div class="collapse" id="easy">
+                <h2 class="my-4">Easy Level Questions</h2>
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Question ID</th>
+                            <th>Subject Code</th>
+                            <th>Question</th>
+                            <th>Bloom Level</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-dark">
+                        {% for question in difficulty_levels.easy %}
+                        <tr>
+                            <td>{{ question.id }}</td>
+                            <td>{{ question.subject_code }}</td>
+                            <td>{{ question.question_text }}</td>
+                            <td>{{ question.bloom_level }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4" class="text-center">No easy questions found</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Medium Questions -->
+            <div class="collapse" id="medium">
+                <h2 class="my-4">Medium Level Questions</h2>
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Question ID</th>
+                            <th>Subject Code</th>
+                            <th>Question</th>
+                            <th>Bloom Level</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-dark">
+                        {% for question in difficulty_levels.medium %}
+                        <tr>
+                            <td>{{ question.id }}</td>
+                            <td>{{ question.subject_code }}</td>
+                            <td>{{ question.question_text }}</td>
+                            <td>{{ question.bloom_level }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4" class="text-center">No medium questions found</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Hard Questions -->
+            <div class="collapse" id="hard">
+                <h2 class="my-4">Hard Level Questions</h2>
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Question ID</th>
+                            <th>Subject Code</th>
+                            <th>Question</th>
+                            <th>Bloom Level</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-dark">
+                        {% for question in difficulty_levels.hard %}
+                        <tr>
+                            <td>{{ question.id }}</td>
+                            <td>{{ question.subject_code }}</td>
+                            <td>{{ question.question_text }}</td>
+                            <td>{{ question.bloom_level }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4" class="text-center">No hard questions found</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- All Questions Analysis (Bar Chart) -->
+            <div class="collapse" id="all">
+                <h2 class="my-4">All Questions Analysis</h2>
+                <div class="container">
+                    <canvas id="barChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Include Chart.js from CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- JavaScript to render the bar chart -->
+<script>
+    // Parse the chart data passed from Django
+    const chartData = JSON.parse('{{ chart_data | escapejs }}');
+
+    // Create the bar chart
+    const ctx = document.getElementById('barChart').getContext('2d');
+    const barChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: chartData.labels,
+            datasets: [{
+                label: 'Percentage of Questions by Difficulty Level',
+                data: chartData.data,
+                backgroundColor: ['#4CAF50', '#FFC107', '#F44336'],  // Different colors for each level
+                borderColor: ['#388E3C', '#FF8F00', '#D32F2F'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function (value) {
+                            return value + '%';  // Add % symbol on Y-axis
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

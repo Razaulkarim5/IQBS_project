@@ -1,0 +1,83 @@
+{% extends 'layout.html'   %}
+
+{%  block content %} 
+
+
+
+    <style>
+      
+
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            background-color: rgba(246, 247, 250, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 500%;
+            max-width: 500px;
+        }
+
+       
+
+      
+
+
+        .form-container h2 {
+            color: rgb(248, 244, 244);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+ 
+
+        /* New class for the table */
+        .table-container {
+            color: white; /* Change text color to white */
+        }
+    </style>
+
+
+    <div class="content-wrapper">
+        <div class="form-container">
+            <h2> Questions</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped text-center table-container"> 
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Question ID</th>
+                            <th>Subject Code</th>
+                            <th>Question</th>
+                            <th>Bloom Keyword</th>
+                            <th>Bloom Level</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-dark">
+                        {% for question in questions %}
+                        <tr>
+                            <td>{{ question.id }}</td>
+                            <td>{{ question.subject_code }}</td>
+                            <td>{{ question.question_text }}</td>
+                            <td>{{ question.bloom_keyword }}</td>
+                            <td>{{ question.bloom_level }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+{% endblock %}
+{%  block title  %}
+     Intelligent Question Bank System-View
+{%  endblock %}

@@ -1,0 +1,77 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Intelligent Question Bank System-Create
+{% endblock %}
+
+
+{% block content %}
+<style>
+    .content-wrapper {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-container {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 500px;
+    }
+    .form-container h2 {
+        color: white;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .footer {
+        text-align: center;
+        padding: 10px;
+        background-color: rgba(52, 58, 64, 0.9);
+        color: white;
+    }
+</style>
+
+
+
+<div class="content-wrapper">
+    <div class="form-container">
+        <h2>Create Question</h2>
+        
+        <!-- Display messages -->
+        {% if messages %}
+            <div class="alert alert-success">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        <form method="post" id="createQuestionForm">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="serial-number" class="form-label">Question ID</label>
+                <input type="number" class="form-control" name="serial-number" id="serial-number"
+                    placeholder="Enter Question number" required>
+            </div>
+            <div class="mb-3">
+                <label for="subject-code" class="form-label">Subject Code</label>
+                <input type="text" class="form-control" name="subject-code" id="subject-code"
+                    placeholder="Enter your subject code" required>
+            </div>
+            <div class="mb-3">
+                <label for="question" class="form-label">Write Your Question Here</label>
+                <input type="text" class="form-control" name="question" id="question"
+                    placeholder="Enter your question here in text" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Create</button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
